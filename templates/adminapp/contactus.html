@@ -1,0 +1,195 @@
+{% extends 'adminapp/navbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  {% block head %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+  <style>
+    .contact-info .dbox {
+      margin-bottom: 20px;
+    }
+    .contact-info .dbox .icon {
+      font-size: 24px;
+      margin-right: 15px;
+      background-color: #007bff;
+      border-radius: 50%;
+      padding: 12px;
+    }
+    .contact-info .dbox .text {
+      color: white;
+    }
+    .contact-info .dbox .text span {
+      font-weight: bold;
+    }
+    .contact-info .dbox a {
+      color: white;
+      text-decoration: none;
+    }
+    .contact-info .dbox a:hover {
+      text-decoration: underline;
+    }
+    .contact-form .form-group label {
+      font-weight: bold;
+    }
+    .contact-form input, .contact-form textarea {
+      border-radius: 8px;
+    }
+    .contact-form input[type="submit"] {
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .contact-form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  {% endblock %}
+</head>
+<body>
+
+{% block body %}
+<!-- Main Banner -->
+<div class="container">
+  <ul>
+    <br><br><br><br><br>
+  </ul>
+  <div class="container text-center py-5" style="max-width: 900px;">
+    <h3 class="display-4 mb-4">Contact Us</h3>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item"><a href="#" style="text-decoration: none;">Pages</a></li>
+        <li class="breadcrumb-item active text-primary">Service</li>
+    </ol>    
+  </div>
+</div>
+
+<section class="ftco-section ">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="wrapper">
+            <div class="row g-0">
+              <div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
+                <div class="contact-wrap w-100 p-md-5 p-4 contact-form">
+                  <h3 class="mb-4">Get in touch</h3>
+
+                  {% if messages %}
+                    <ul>
+                      {% for message in messages %}
+                        <li class="alert {{ message.tags }}">{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                  
+                  <form method="POST" action="{% url 'send_email' %}" id="contactForm" name="contactForm" class="contactForm">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                          <label class="form-label" for="name">Full Name</label>
+                          <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6"> 
+                        <div class="form-group">
+                          <label class="form-label" for="email">Email Address</label>
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group mb-4">
+                          <label class="form-label" for="subject">Subject</label>
+                          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-label" for="message">Message</label>
+                          <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="submit" value="Send Message" class="btn btn-primary mt-3">
+                          <div class="submitting"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-5 d-flex align-items-stretch">
+                <div class="info-wrap bg-primary w-100 p-md-5 p-4 contact-info">
+                  <h3>Let's get in touch</h3>
+                  <p class="mb-4">We're open for any suggestion or just to have a chat</p>
+                  <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center" style="color: white;">
+                      <span class="fa fa-map-marker"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Address:</span> 198 West 21st Street, Suite 721 New York NY 10016</p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center" style="color: white;">
+                      <span class="fa fa-phone"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center" style="color: white;">
+                      <span class="fa fa-paper-plane"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Email:</span> <a href="mailto:saisadwiikatam@gmail.com">saisadwiikatam@gmail.com</a></p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center" style="color: white;">
+                      <span class="fa fa-globe"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Website:</span> <a href="#">PulseX.com</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% include 'adminapp/footer.html' %}
+{% endblock %}
+
+<script>
+  window.onload = function() {
+      {% if messages %}
+          {% for message in messages %}
+              {% if message.tags == 'success' %}
+                  alert('{{ message }}');
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="{% static 'js/chatbot.js' %}" type="text/javascript"></script>
+
+</body>
+</html>

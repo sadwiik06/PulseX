@@ -1,0 +1,21 @@
+body {
+    background-color: #EEEEEE;
+}
+
+.form-container {
+    width: 400px !important;
+    background-color: white !important;
+    padding: 2.5rem !important;
+    border-radius: 4px !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1) !important;
+    margin-top : 2rem;
+}
+.form-container img {
+    display: block !important;
+    margin: 0 auto 2.5rem !important;
+}
+.form-control {
+height: 50px !important; /* Adjust height of input fields */
+padding: 0.75rem 1.25rem !important; /* Adjust padding inside the input fields */
+margin-bottom: 2rem !important;
+}

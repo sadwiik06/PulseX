@@ -1,0 +1,266 @@
+.card {
+     height: 640px;
+     width: 460px;
+     border: 1px solid #f0f0f0;
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .card-body {
+     display: flex;
+     flex-direction: column;
+     overflow: hidden;
+ }
+ 
+ .comments-wrapper {
+     max-height: 200px; /* Use max-height instead of fixed height */
+     overflow-y: auto;
+     margin-bottom: 10px;
+ }
+ 
+ .comments-container {
+     max-height: 100%; /* Ensure the container takes up available space */
+     overflow-y: scroll;
+ }
+ .comments-container::-webkit-scrollbar {
+     width: 7px;
+ }
+ form {
+     margin-top: 10px; /* Adds space above the comment form */
+ }
+ .comments-container::-webkit-scrollbar-thumb {
+     border-radius: 4px;
+     background-color: rgba(0, 0, 0, 0.5);
+ }
+ 
+ .comment {
+     border-bottom: 1px solid #eee;
+     padding-bottom: 5px;
+     margin-bottom: 5px;
+ }
+ 
+ .comment:last-child {
+     border-bottom: none; /* Removes border from the last comment */
+ }
+ 
+ .card-footer {
+     background-color: white;
+     border-color: white;
+ }
+ 
+ .like, .comment, .share {
+     color: #666666;
+     font-weight: 500;
+ }
+ 
+ .like {
+     margin-right: 50px;
+ }
+ 
+ .share {
+     margin-left: auto;
+ }
+ 
+ .profile-pic {
+     width: 50px;
+     height: 50px;
+     object-fit: cover; /* Ensures the image fits the circle without distortion */
+     border-radius: 50%; /* Makes the image round */
+ }
+
+form button {
+     background: none; /* Remove default button styling */
+     border: none; /* Remove border */
+     padding: 0; /* Remove extra padding */
+     color: #000000; /* Icon color */
+     font-size: 1.5rem; /* Adjust icon size */
+     cursor: pointer; /* Pointer on hover */
+ }
+ 
+ form button:hover {
+     color: #0056b3; /* Change color on hover for a better UX */
+ }
+/* Adjust the comment form layout */
+form {
+     display: flex;
+     align-items: center;
+     margin-top: 10px; /* Space above the form */
+ }
+ 
+ /* Profile image next to the comment input */
+ .comment-profile-pic {
+     width: 40px; /* Adjust profile image size */
+     height: 40px;
+     object-fit: cover; /* Ensure the image fits properly */
+     border-radius: 50%; /* Make the image round */
+     margin-right: 10px; /* Space between image and input */
+ }
+ 
+ /* Style the input field */
+ form .form-group {
+     flex-grow: 1; /* Make input take up available space */
+ }
+ 
+ form input {
+     height: 38px; /* Small input height */
+     border-radius: 20px; /* Rounded corners */
+     padding-left: 15px; /* Comfortable padding */
+ }
+ 
+ /* Style the send button (Telegram icon) */
+ form button {
+     background: none;
+     border: none;
+     padding: 0;
+     color: #007bff;
+     font-size: 1.5rem; /* Icon size */
+     cursor: pointer;
+ }
+ 
+ form button:hover {
+     color: #0056b3; /* Hover effect for better UX */
+ }
+ 
+ /* Adjust the username size in comments */
+ .comment strong {
+     font-size: 0.9rem; /* Reduce the font size */
+     color: #333; /* Make it a bit darker for readability */
+ }
+ /* Comment section - align profile image and text */
+.comment-content {
+     background-color: #fcfcfc;
+     padding: 10px;
+     border-radius: 10px;
+     flex-grow: 1;
+ }
+ 
+ .comment-profile-pic {
+     width: 40px;
+     height: 40px;
+     object-fit: cover;
+     border-radius: 50%;
+     margin-right: 10px; /* Space between image and text */
+ }
+ 
+ /* Style the username next to each comment */
+ .comment-username {
+     font-size: 0.9rem; /* Reduce font size */
+     font-weight: bold;
+     margin-bottom: 2px;
+ }
+ 
+ /* Comment paragraph styling */
+ .comment-content p {
+     margin: 5px 0;
+     font-size: 0.95rem;
+ }
+ 
+ /* Timestamp styling */
+ .comment-content small {
+     font-size: 0.75rem;
+     color: #888;
+ }
+ /* Flex container for username and timestamp */
+.comment-content .d-flex {
+    align-items: center;
+}
+
+/* Username styling */
+.comment-username {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Timestamp styling - aligned to the right */
+.comment-timestamp {
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: auto; /* Pushes the timestamp to the far right */
+}
+
+/* Comment paragraph styling */
+.comment-content p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+.comment-section {
+    transition: max-height 0.4s ease-in-out;
+    position: relative;
+    min-height: 300px; /* Adjust this based on your card height */
+  }
+  
+  .comment-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+   
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ffecec; /* Optional, for a separator */
+  }
+  
+  .comment-input {
+    flex-grow: 1; /* Allows input to take the remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    box-sizing: border-box;
+  }
+  
+  .comment-submit-btn {
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .comment-submit-btn i {
+    margin: 0;
+  }
+  
+  .comment-submit-btn:hover {
+    background-color: #0056b3;
+  }
+/* Add this to your posts.css or within a <style> tag in your HTML */
+.text-dark {
+    margin-left: 117px;
+   
+}/* Container scroll settings */
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+  
+  /* Each post snaps to the top */
+  .post-card {
+    scroll-snap-align: start;
+    margin-bottom: 40px;
+ 
+  }
+  
+  /* Optional: Customize scrollbars for better UX */
+  .container::-webkit-scrollbar {
+    width: 0;  /* Hide default scrollbar for clean look */
+  }
+.card-header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background-color: white; /* Set background color to white */
+    padding: 10px; /* Add some padding for better spacing */
+    
+}
+
+.report-btn {
+    margin-left: auto; /* Push the button to the right end */
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    {% block head %}
+    <!-- ICONS -->
+
+    
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" /> 
+          <script src="https://unpkg.com/@phosphor-icons/web"></script>
+          
+    <!-- Additional head content can go here -->
+    {% endblock %}
+  </head>
+  
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-white sticky-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <div class="menu-btn">
+              <i class="bi bi-list"></i>
+            </div>
+              <img src="{% static 'images/design.png' %}" alt="Logo" width="25" height="26" class="d-inline-block align-text-top">
+              PulseX
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="d--flex flex-row collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                  <li class="ps-4 nav-item">
+                      <a class="nav-link link-blue " href="{% url 'student:posts_page' %}">Home</a>
+                  </li>
+                  <li class="px-4 nav-item">
+                      <a class="nav-link link-blue" href="{% url 'student:room_list' %}">Rooms</a>
+                  </li>
+                  <li class="nav-item"></li>
+                  <a class="nav-link link-blue " href="{% url 'student:profile' id=request.user.id %}">Profile</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="d--flex flex-row-reverse collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <form action="{% url 'student:search_posts' %}" method="GET" class="d-flex">
+                  <div class="search-box">
+                      <button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+                      <input type="text" name="username" class="input-search" placeholder="Type to Search..." required>
+                  </div>
+              </form>
+          </li>
+          
+              {% comment %} <li class="nav-item">
+                  <div class="notify">
+                      <button class="btn-notify"><i class="bi bi-bell"></i></button </div>
+              </li>
+              <li class="nav-item">
+                  <div class="chat">
+                      <button class="btn-chat"><i class="bi bi-chat-left"></i></button </div>
+              </li> {% endcomment %}
+           
+              
+              
+                        
+              <li class="nav-item">
+                  <div class="dropdown profile">
+                      <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <!-- Replace the icon with a profile image -->
+                          <img src="{% if request.user.profile.profile_picture %}{{ request.user.profile.profile_picture.url }}{% else %}{% static 'images/user.jpg' %}{% endif %}" 
+                          alt="User Image" class="profile-pic rounded-circle" width="50" height="50">                      </button>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                          <li><a class="dropdown-item" href="#">Dark Mode</a></li>
+                      </ul>
+                  </div>
+              </li>
+              
+
+
+  </nav>
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3">
+      <div class="sidebar shadow-sm">
+        
+        <div class="head">
+          <div class="user-img">
+            <img src="{% if request.user.profile.profile_picture %}{{ request.user.profile.profile_picture.url }}{% else %}{% static 'images/user.jpg' %}{% endif %}" 
+            alt="User Image" class="profile-pic rounded-circle" width="50" height="50">
+
+          </div>
+          <div class="user-details">
+            <p class="title">ADMIN</p>
+            <p class="name">{{ request.user.username }}</p>
+          </div>
+        </div>
+        
+        <div class="nav">
+          <div class="menu">
+            <p class="title">Main</p>
+            <ul>
+              <li>
+                <a href="{% url 'admincontrolapp:posts' %}">
+                    <i class="icon ph-bold ph-house-simple"></i>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+              <li>
+                <a href="{% url 'student:course_management' %}">
+
+                    <i class="icon ph-bold ph-user"></i>
+                    <span class="text">Resources</span>
+                </a>
+            </li>
+            
+              <li class="">
+                <a href="{% url 'student:upload_post' %}">
+                  <i class="icon ph-bold ph-file-text"></i>
+                  <span class="text">Upload Posts</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'student:room_list' %}">
+                  <i class="icon ph-bold ph-calendar-blank"></i>
+                  <span class="text">Rooms</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'student:delete_account' %}">
+                  <i class="icon ph-bold ph-calendar-blank"></i>
+                  <span class="text">Delete Account</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'student:profile' id=request.user.id %}">
+                  <i class="icon ph-bold ph-chart-bar"></i>
+                  <span class="text">Profile</span>
+                  {% comment %} <i class="arrow ph-bold ph-caret-down"></i> {% endcomment %}
+                </a>
+                
+                
+                
+                {% comment %} <ul class="sub-menu">
+                  <li><a href="#"><span class="text">Messages</span></a></li>
+                  <li><a href="#"><span class="text">Discussions</span></a></li>
+                 
+                </ul> {% endcomment %}
+              </li>
+            </ul>
+          </div>
+          <div class="menu">
+            <p class="title" href="">Settings</p>
+            <ul>
+              <li>
+                <a href="{% url 'student:profile_edit' %}">
+                  <i class="icon ph-bold ph-gear"></i>
+                  <span class="text">Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="menu">
+          <p class="title">Account</p>
+          <ul>
+            <li>
+              <a href="{% url 'logout' %}">
+                <i class="icon ph-bold ph-sign-out"></i>
+                <span class="text">Logout</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>    
+    <div class="col-lg-9">
+    {% block body %}
+
+    {% endblock %}
+    </div>
+  </div>
+    </div>
+    <script>
+      document.querySelector('.btn-search').addEventListener('click', function() {
+        const input = document.querySelector('.input-search');
+        // Get the value of the input
+        const searchTerm = input.value;
+        if (searchTerm) {
+          // Redirect or perform your search functionality
+          window.location.href = `/search/${encodeURIComponent(searchTerm)}`; // Adjust the URL as needed
+        }
+      });
+    </script>
+    
+ 
+    <!-- Jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+      integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenkjt6nYHTyICwUhlhd8uHxkktMw7VR7TeQkR8xVFeNobV1/Zy+mQ2jG9ygVZj1" crossorigin="anonymous"></script>
+    <script src="{% static 'js/chatbot.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/chatbot.js' %}" type="text/javascript"></script>
+
+   </body>
+</html>

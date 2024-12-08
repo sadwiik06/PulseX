@@ -1,0 +1,106 @@
+{% extends 'studentapp/index.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload New Post</title>
+    {% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    {% endblock %}
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .upload-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 50px;
+        }
+        .upload-container h2 {
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #343a40;
+            text-align: center;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+            border: 1px solid #ced4da;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto upload-container">
+                <h2>Upload New Post</h2>
+
+                <!-- Display messages -->
+                {% comment %} {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %} {% endcomment %}
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Post image input -->
+                    <div class="mb-4">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" class="form-control" id="image" name="image" required>
+                    </div>
+                    
+                    <!-- Post caption input -->
+                    <div class="mb-4">
+                        <label for="caption" class="form-label">Caption</label>
+                        <textarea class="form-control" id="caption" name="caption" rows="4" placeholder="Write a caption..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Post</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}
+    
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/chatbot.js' %}" type="text/javascript"></script>
+ </body>
+</html>

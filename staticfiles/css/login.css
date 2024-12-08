@@ -1,0 +1,32 @@
+body {
+    background-color: #EEEEEE;
+}
+
+    .form-container {
+        width: 400px !important;
+        background-color: white;
+        padding: 2.2rem;
+        border-radius: 4px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-container img {
+        display: block;
+        margin: 0 auto 2.5rem;
+    }
+    .form-control {
+height: 50px;
+padding: 0.75rem 1.25rem;
+  margin-bottom: 2rem;
+}
+/* Custom styles for the error message box */
+
+#custom-error-box {
+    max-width: 350px; /* Limits the width */
+    margin: 10px auto; /* Centers the box and adds margin */
+    padding: 16px; /* Adds padding inside the box */
+    font-size: 14px; /* Adjusts the font size */
+    border-radius: 5px; /* Rounds the corners */
+    border: 1px solid #f5c2c7; /* Adds a border with light red color */
+    background-color: #f8d7da; /* Light red background */
+    color: #842029; /* Dark red text */
+}
