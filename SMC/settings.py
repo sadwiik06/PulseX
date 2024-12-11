@@ -79,12 +79,15 @@ WSGI_APPLICATION = 'SMC.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
+
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SMC',         # The name of your database
-        'USER': 'postgres',        # Your PostgreSQL username
-        'PASSWORD': 'arunakatam85@SAI1',    # Your PostgreSQL password
-        'HOST': 'localhost',            # Set to empty string for localhost
-        'PORT': '5432',                 # Default PostgreSQL port
+        'NAME': 'Replace with your PostgreSQL database name',      
+        'USER': 'PostgreSQL username',       
+        'PASSWORD': 'PostgreSQL password',   
+        'HOST': 'localhost',         # or your PostgreSQL server IP address
+        'PORT': '5432',              # Default PostgreSQL port
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
