@@ -84,6 +84,7 @@ from dotenv import load_dotenv
 load_dotenv()
 DATABASES = {
     'default': {
+
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME', 'default_name'),
         'USER': os.getenv('DB_USER', 'default_user'),
